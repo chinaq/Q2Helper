@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace QHelper.QDataHelper
+namespace Qiang.QDataHelper
 {
     public class QByte
     {

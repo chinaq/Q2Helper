@@ -1,13 +1,13 @@
-﻿using QHelper.QDataHelper;
+﻿using Qiang.QDataHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace QHelper.UnitTest.DataDealer
+namespace Qiang.UnitTest.QDataHelper
 {
-    public class BcdTest
+    public class QByteTest
     {
         [Fact]
         public void Test_ToBcd2Decimal()
