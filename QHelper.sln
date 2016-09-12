@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qiang.QDataHelper", "src\DataDealer\Qiang.QDataHelper.csproj", "{7B441150-6285-4A94-B703-982DC590E066}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QHelper.UnitTest", "test\QHelper.UnitTest\QHelper.UnitTest.xproj", "{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AF81C200-B1B2-4A64-8363-08607DC9A639}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DDBC3A66-A69D-4F0D-B3E1-A543EC8FE07E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CAEE422F-6641-4235-8298-26964ED1CE72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B441150-6285-4A94-B703-982DC590E066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B441150-6285-4A94-B703-982DC590E066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B441150-6285-4A94-B703-982DC590E066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B441150-6285-4A94-B703-982DC590E066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B441150-6285-4A94-B703-982DC590E066} = {CAEE422F-6641-4235-8298-26964ED1CE72}
+		{4301AA0B-8CFC-4831-ABBA-71D20DEE6D69} = {DDBC3A66-A69D-4F0D-B3E1-A543EC8FE07E}
+	EndGlobalSection
+EndGlobal
