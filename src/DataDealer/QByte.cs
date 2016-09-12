@@ -23,16 +23,21 @@ namespace Qiang.QDataHelper
 
         public static bool CheckAccumulation(byte[] bytesToCheck, int startPos, int endPos, int checkPos)
         {
-            int totalLen = bytesToCheck.Length;
+            int _checkPos = (bytesToCheck.Length + checkPos) % bytesToCheck.Length;
+            return bytesToCheck[_checkPos] == GenerateAccumulation(bytesToCheck, startPos, endPos);
+        }
+
+        public static byte GenerateAccumulation(byte[] bytesForGenerate, int startPos, int endPos)
+        {
+            int totalLen = bytesForGenerate.Length;
             int _endPos = (totalLen + endPos) % totalLen;
-            int _checkPos = (totalLen + checkPos) % totalLen;
 
             byte checkResult = 0;
             for (int i = startPos; i <= _endPos; i++)
             {
-                checkResult += bytesToCheck[i];
+                checkResult += bytesForGenerate[i];
             }
-            return checkResult == bytesToCheck[_checkPos];
+            return checkResult;
         }
     }
 }

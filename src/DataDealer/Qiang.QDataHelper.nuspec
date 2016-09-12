@@ -6,6 +6,7 @@
     <title>$title$</title>
     <authors>qiang</authors>
     <owners>qiang</owners>
+    <projectUrl>https://github.com/chinaq/Q2Helper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>help to deal data</description>
     <releaseNotes>First Release</releaseNotes>
