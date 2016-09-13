@@ -9,21 +9,65 @@ namespace Qiang.UnitTest.QDataHelper
 {
     public class QByteTest
     {
+
+        #region 测试 BCD
+
         [Fact]
         public void Test_ToBcd2Decimal()
         {
             //0.arrange
             byte[] bytes = new byte[]
-            {   0x88, 0x88,
-                    0x12, 0x34, 0x056, 0x78, 0x99,
-                    0x88
+            {
+                0x88, 0x88,
+                0x12, 0x34, 0x056, 0x78, 0x99,
+                0x88
             };
             //1.action
             double vol = QByte.ToBcd2Decimal(bytes, 2, 5);
             //2.assert
             Assert.Equal(12345678.99d, vol);
         }
+        
 
+        [Fact]
+        public void Test_ToBcdStr()
+        {
+            //0.arrange
+            byte[] bytes = new byte[]
+            {
+                0x88, 0x88,
+                0x12, 0x34, 0x056, 0x78, 0x99,
+                0x88
+            };
+            //1.action
+            string str = QByte.ToBcdStr(bytes, 2, 5);
+            //2.assert
+            Assert.Equal("1234567899", str);
+        }
+
+
+        [Fact]
+        public void Test_ToBcd()
+        {
+            //0.arrange
+            byte[] bytes = new byte[]
+            {
+                0x88, 0x88,
+                0x12, 0x34, 0x056, 0x78, 0x99,
+                0x88
+            };
+            //1.action
+            int val = QByte.ToBcdInt(bytes, 2, 5);
+            //2.assert
+            Assert.Equal(1234567899, val);
+        }
+
+        #endregion
+
+
+
+
+        #region 测试 校验和
 
         [Fact]
         public void Test_GenerateAccumulation()
@@ -63,6 +107,33 @@ namespace Qiang.UnitTest.QDataHelper
             //2.assert
             Assert.True(isValid);
         }
+
+        #endregion
+
+
+
+
+        #region 测试 十六进制值
+
+        [Fact]
+        public void Test_TwoBytesToInt() {
+            //0.arrange
+            byte[] bytes = new byte[]
+            {
+                0x88, 0x88,
+                0x12, 0x34,
+                0x056, 0x78, 0x99, 0x88
+            };
+            //1.action
+            int vol = QByte.TwoBytesToInt(bytes, 2);
+            //2.assert
+            Assert.Equal(4660, vol);
+        }
+
+        #endregion
+
+
+
 
         //0.arrange
         //1.action
