@@ -53,7 +53,7 @@ namespace Qiang.QDataHelper
         /// <summary>
         /// 检验校验和
         /// </summary>
-        public static bool CheckAccumulation(byte[] bytesToCheck, int startPos, int endPos, int checkPos)
+        public static bool CheckAccumulation(byte[] bytesToCheck, int startPos = 0, int endPos = -3, int checkPos = -2)
         {
             int _checkPos = (bytesToCheck.Length + checkPos) % bytesToCheck.Length;
             return bytesToCheck[_checkPos] == GenerateAccumulation(bytesToCheck, startPos, endPos);
@@ -63,7 +63,7 @@ namespace Qiang.QDataHelper
         /// <summary>
         /// 生成校验和
         /// </summary>
-        public static byte GenerateAccumulation(byte[] bytesForGenerate, int startPos, int endPos)
+        public static byte GenerateAccumulation(byte[] bytesForGenerate, int startPos = 0, int endPos = -3)
         {
             int totalLen = bytesForGenerate.Length;
             int _endPos = (totalLen + endPos) % totalLen;

@@ -69,6 +69,9 @@ namespace Qiang.UnitTest.QDataHelper
 
         #region 测试 校验和
 
+        /// <summary>
+        /// 生成校验码 正确
+        /// </summary>
         [Fact]
         public void Test_GenerateAccumulation()
         {
@@ -88,7 +91,29 @@ namespace Qiang.UnitTest.QDataHelper
             Assert.Equal(0xf5, accumActual);
         }
 
+        /// <summary>
+        /// 生成校验码 正确 默认位置 
+        /// </summary>
+        [Fact]
+        public void Test_GenerateAccumulation_DefaultPos()
+        {     //0.arrange
+            byte[] bytesToCheck = new byte[] {
+                0x68, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x68, 0x13, 0x07, 0x44, 0x44, 0x55, 0x66, 0x77, 0x88, 0x33,
+                0xf5, //to check
+                0xff  //end
+            };
+            
+            //1.action
+            byte accumActual = QByte.GenerateAccumulation(bytesToCheck);
 
+            //2.assert
+            Assert.Equal(0xf5, accumActual);
+        }
+
+
+        /// <summary>
+        /// 检查校验码 正确
+        /// </summary>
         [Fact]
         public void Test_CheckAccumulation() {
             //0.arrange
@@ -103,6 +128,26 @@ namespace Qiang.UnitTest.QDataHelper
 
             //1.action
             bool isValid = QByte.CheckAccumulation(bytesToCheck, startPos, endPos, checkPos);
+
+            //2.assert
+            Assert.True(isValid);
+        }
+
+        /// <summary>
+        /// 检查校验码 正确 默认位置
+        /// </summary>
+        [Fact]
+        public void Test_CheckAccumulation_DefaultPos()
+        {
+            //0.arrange
+            byte[] bytesToCheck = new byte[] {
+                0x68, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x68, 0x13, 0x07, 0x44, 0x44, 0x55, 0x66, 0x77, 0x88, 0x33,
+                0xf5, //to check
+                0xff  //end
+            };
+
+            //1.action
+            bool isValid = QByte.CheckAccumulation(bytesToCheck);
 
             //2.assert
             Assert.True(isValid);
