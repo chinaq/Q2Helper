@@ -10,6 +10,14 @@ namespace Qiang.UnitTest.QDataHelper
     public class QByteTest
     {
 
+        private QByte qByte;
+
+        public QByteTest()
+        {
+            qByte = new QByte();
+        }
+
+
         #region 测试 BCD
 
         [Fact]
@@ -23,7 +31,7 @@ namespace Qiang.UnitTest.QDataHelper
                 0x88
             };
             //1.action
-            double vol = QByte.ToBcd2Decimal(bytes, 2, 5);
+            double vol = qByte.ToBcd2Decimal(bytes, 2, 5);
             //2.assert
             Assert.Equal(12345678.99d, vol);
         }
@@ -40,7 +48,7 @@ namespace Qiang.UnitTest.QDataHelper
                 0x88
             };
             //1.action
-            string str = QByte.ToBcdStr(bytes, 2, 5);
+            string str = qByte.ToBcdStr(bytes, 2, 5);
             //2.assert
             Assert.Equal("1234567899", str);
         }
@@ -57,7 +65,7 @@ namespace Qiang.UnitTest.QDataHelper
                 0x88
             };
             //1.action
-            int val = QByte.ToBcdInt(bytes, 2, 5);
+            int val = qByte.ToBcdInt(bytes, 2, 5);
             //2.assert
             Assert.Equal(1234567899, val);
         }
@@ -85,7 +93,7 @@ namespace Qiang.UnitTest.QDataHelper
             int endPos = -3;
             
             //1.action
-            byte accumActual = QByte.GenerateAccumulation(bytesToCheck, startPos, endPos);
+            byte accumActual = qByte.GenerateAccumulation(bytesToCheck, startPos, endPos);
 
             //2.assert
             Assert.Equal(0xf5, accumActual);
@@ -104,7 +112,7 @@ namespace Qiang.UnitTest.QDataHelper
             };
             
             //1.action
-            byte accumActual = QByte.GenerateAccumulation(bytesToCheck);
+            byte accumActual = qByte.GenerateAccumulation(bytesToCheck, 0, -3);
 
             //2.assert
             Assert.Equal(0xf5, accumActual);
@@ -127,7 +135,7 @@ namespace Qiang.UnitTest.QDataHelper
             int checkPos = -2;
 
             //1.action
-            bool isValid = QByte.CheckAccumulation(bytesToCheck, startPos, endPos, checkPos);
+            bool isValid = qByte.CheckAccumulation(bytesToCheck, startPos, endPos, checkPos);
 
             //2.assert
             Assert.True(isValid);
@@ -147,7 +155,7 @@ namespace Qiang.UnitTest.QDataHelper
             };
 
             //1.action
-            bool isValid = QByte.CheckAccumulation(bytesToCheck);
+            bool isValid = qByte.CheckAccumulation(bytesToCheck, 0, -3, -2);
 
             //2.assert
             Assert.True(isValid);
@@ -170,13 +178,32 @@ namespace Qiang.UnitTest.QDataHelper
                 0x056, 0x78, 0x99, 0x88
             };
             //1.action
-            int vol = QByte.TwoBytesToInt(bytes, 2);
+            int vol = qByte.TwoBytesToInt(bytes, 2);
             //2.assert
             Assert.Equal(4660, vol);
         }
 
         #endregion
 
+
+
+        /// <summary>
+        /// 测试结合数组
+        /// </summary>
+        [Fact]
+        public void Test_Combine()
+        {
+            //arrange
+            byte[] bytes1 = { 0x12, 0x34 };
+            byte[] bytes2 = { 0x56, 0x78 };
+            byte[] bytes3 = { 0x90 };
+
+            byte[] expected = new byte[] { 0x12, 0x34, 0x56, 0x78, 0x90 };
+            //action
+            byte[] result = qByte.Combine(bytes1, bytes2, bytes3);
+            //assert
+            Assert.Equal(expected, result);
+        }
 
 
 
